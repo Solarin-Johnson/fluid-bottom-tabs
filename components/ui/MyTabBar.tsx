@@ -17,22 +17,23 @@ export const MyTabBar = forwardRef<View, MyTabBarProps>(({ children }, ref) => {
 
   const insets = useSafeAreaInsets();
 
-  return (
-    <Animated.View
-      ref={ref}
-      style={[
-        styles.container,
-        wide && styles.floating,
-        {
-          backgroundColor,
-          paddingBottom: (!wide ? insets.bottom : 0) + 12,
-          marginBottom: wide ? insets.bottom + 12 : 0,
-        },
-      ]}
-    >
-      {children}
-    </Animated.View>
-  );
+  if (width)
+    return (
+      <Animated.View
+        ref={ref}
+        style={[
+          styles.container,
+          wide && styles.floating,
+          {
+            backgroundColor,
+            paddingBottom: (!wide ? insets.bottom : 0) + 12,
+            marginBottom: wide ? insets.bottom + 12 : 0,
+          },
+        ]}
+      >
+        {children}
+      </Animated.View>
+    );
 });
 
 const styles = StyleSheet.create({
